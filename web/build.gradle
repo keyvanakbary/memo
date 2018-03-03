@@ -1,0 +1,53 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+		axonVersion = '3.1.2'
+        junitVersion = '5.0.0'
+        jacksonVersion = '2.8.1'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    compile project(':core')
+    compile project(':core-api')
+    compile project(':query')
+
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile "org.axonframework:axon-core:${axonVersion}"
+	compile "org.axonframework:axon-spring-boot-starter:${axonVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	runtime 'org.springframework.boot:spring-boot-devtools'
+	runtime 'mysql:mysql-connector-java:6.0.6'
+
+	compileOnly 'org.projectlombok:lombok:1.16.20'
+
+    compile 'org.hibernate:hibernate-c3p0:5.2.10.Final'
+    compile 'org.hibernate:hibernate-java8:5.0.11.Final'
+
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jacksonVersion}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+	testCompile "org.axonframework:axon-test:${axonVersion}"
+}

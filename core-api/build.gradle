@@ -1,0 +1,17 @@
+buildscript {
+	ext {
+		axonVersion = '3.1.2'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.axonframework:axon-core:${axonVersion}"
+	compileOnly 'org.projectlombok:lombok:1.16.20'
+}

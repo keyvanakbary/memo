@@ -1,0 +1,6 @@
+rootProject.name = 'memo'
+
+include 'core'
+include 'core-api'
+include 'query'
+include 'web'

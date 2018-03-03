@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mysqldb:
+    image: mysql:5.6.35
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=memo
+      - MYSQL_PASSWORD=memo
+      - MYSQL_DATABASE=memo
+    ports:
+      - 3306:3306
